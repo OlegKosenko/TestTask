@@ -1,0 +1,40 @@
+extend layout
+block content
+	form(action='/save',method='post')
+		table
+			tr
+				td(style="width: 200px")
+					a First Name
+				td
+					input(type="text", placeholder="fill first name", id="firstNameId", name="firstName")
+			tr
+				td
+					a Last Name
+				td
+					input(type="text", placeholder="fill last name", id="lastNameId", name="lastName")
+			tr(style="height: 60px")
+				td
+					a Employment date
+				td
+					input(type="date", id="dateEmpId", name="employmentDate")
+			tr(style="height: 60px")
+				td
+					a Rate
+				td
+					input(type="text", placeholder="fill rate", id="rateId", name="rate")
+			tr(style="height: 60px")
+				td
+					a Job title
+				td
+					select(name="jobTitle", id="jobTitleId")
+								option(value="CEO") CEO
+								option(value="Business Analyst") Business Analyst
+								option(value="Developer") Developer
+								option(value="QA") QA
+			tr(style="height: 120px")
+				td
+					button(style='width: 100px; height: 30px;'
+								onclick='window.location.assign("/")') Back
+				td
+					input(type='submit',value='Save',style='width: 100px; height: 30px;')
+block sidebar

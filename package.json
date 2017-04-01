@@ -1,0 +1,20 @@
+{
+  "name": "testtask",
+  "version": "0.0.1",
+  "private": "true",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^3.0.0-alpha4",
+    "jade": "^1.11.0",
+    "pg": "^6.1.5",
+    "sequelize": "^3.30.4"
+  },
+  "scripts": {
+    "start": "node server"
+  },
+  "description": "employee list",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
+}

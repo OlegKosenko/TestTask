@@ -1,0 +1,28 @@
+extend layout
+block content
+	button(style='width: 140px; height: 30px;'
+	onclick='window.location.assign("/add")') Add new employee
+	table(border=1)
+		thead
+			tr(style="background-color: grey")
+				th(style="width:220px") Name
+				th(style="width:160px") Job title
+				th(style="width:100px") Employment Date
+				th(style="width:100px") Rate
+				th Action
+		tbody
+			- var i=0
+			each employee in employeeList
+				- i++
+				- var color = (i % 2 == 0) ? '#E9E5DF' : '#FFF'
+				- var dateEmp = new Date(employee.employmentDate)
+				- var dateEmpStr = dateEmp.getDate() + "/" + (dateEmp.getMonth()+1) + "/" + dateEmp.getFullYear()
+				tr(style='background-color: ' + color)
+					td #{employee.firstName + ' ' + employee.lastName}
+					td #{employee.jobTitle}
+					td #{dateEmpStr}
+					td #{employee.rate}$
+					td
+						a #[a(href="/delete?id=#{employee.id}") Delete]
+			- i++
+block sidebar
