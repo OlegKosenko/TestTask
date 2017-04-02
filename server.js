@@ -78,27 +78,48 @@ app.get('/delete', function (req, res) {
 
 app.post('/save', function (req, res) {
 	console.log(req.body);
-	var newEmployee = req.body
-    console.log(newEmployee);
-    employee
-		.create(newEmployee)
-		.then(createdRecord=>{
-            employee
-                .findAll()
-                .then(employeeList=>{
-                    res.render('index',
-                        { title : 'List',
-                            employeeList: employeeList
-                        })
-                })
-                .catch(msg=>{
-                    console.log(msg);
-                })
-		})
-		.catch(msg=>{
-			console.log(msg);
-			res.send({success: false});
-		})
+	if (req.body.submitBtn == "Save") {
+        var newEmployee = {};
+        newEmployee.firstName = req.body.firstName;
+        newEmployee.lastName = req.body.lastName;
+        newEmployee.employmentDate = req.body.employmentDate;
+        newEmployee.rate = req.body.rate;
+        newEmployee.jobTitle = req.body.jobTitle;
+        console.log(newEmployee);
+        employee
+            .create(newEmployee)
+            .then(createdRecord => {
+                employee
+                    .findAll()
+                    .then(employeeList => {
+                        res.render('index',
+                            {
+                                title: 'List',
+                                employeeList: employeeList
+                            })
+                    })
+                    .catch(msg=> {
+                        console.log(msg);
+                    })
+            })
+            .catch(msg => {
+                console.log(msg);
+                res.send({success: false});
+            })
+    } else {
+        employee
+            .findAll()
+            .then(employeeList => {
+                res.render('index',
+                    {
+                        title: 'List',
+                        employeeList: employeeList
+                    })
+            })
+            .catch(msg=> {
+                console.log(msg);
+            })
+    }
 })
 
 app.listen(5000)

@@ -33,8 +33,11 @@ block content
 								option(value="QA") QA
 			tr(style="height: 120px")
 				td
-					button(style='width: 100px; height: 30px;'
-								onclick='window.location.assign("/")') Back
+					input(name='submitBtn', type='submit',value='Back',style='width: 100px; height: 30px;')
 				td
-					input(type='submit',value='Save',style='width: 100px; height: 30px;')
+					input(name='submitBtn', type='submit',value='Save',style='width: 100px; height: 30px;')
 block sidebar
+script.
+	var back = function() {
+		alert("back");
+	}
