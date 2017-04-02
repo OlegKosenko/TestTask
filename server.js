@@ -82,7 +82,11 @@ app.post('/save', function (req, res) {
         var newEmployee = {};
         newEmployee.firstName = req.body.firstName;
         newEmployee.lastName = req.body.lastName;
-        newEmployee.employmentDate = req.body.employmentDate;
+        if (req.body.employmentDate != '') {
+            newEmployee.employmentDate = req.body.employmentDate;
+        } else {
+            newEmployee.employmentDate = null;
+        }
         newEmployee.rate = req.body.rate;
         newEmployee.jobTitle = req.body.jobTitle;
         console.log(newEmployee);
